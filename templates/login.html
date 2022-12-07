@@ -70,7 +70,6 @@
         if(checkField(['edtUser','edtPass'])){
             let user = document.querySelector('#edtUser').value
             let hash = document.querySelector('#edtPass').value.getHash(30)
-
             const params = new Object;
                 params.user = user;
                 params.hash = hash;
@@ -79,11 +78,12 @@
 
             myPromisse.then((resolve)=>{
                 const json = JSON.parse(resolve);            
-
                 if(json.length > 0){
                     localStorage.setItem("id",json[0].id);
                     localStorage.setItem("username",json[0].user);
                     localStorage.setItem("hash",json[0].hash);
+                    localStorage.setItem("system",json[0].system);
+                    localStorage.setItem("cliente",json[0].client);
                     localStorage.setItem("nome",json[0].nome);
                     localStorage.setItem("access",json[0].class);
                     localStorage.setItem("cel",json[0].cel);

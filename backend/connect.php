@@ -2,22 +2,16 @@
 
     include "crip.php";
 
-    // usuario  : flexib52_tales      | VYVYqVy3)3/=psVeZ+VW]X,-tVjl3fLa,`48`VuYhVnzVv/0
-    // senha    : Xspider0            | #M#)B#J+C?8@AD#4*K#%,(0*E#9;15G0:/(#c#F)7#?z#GK2
-    // servidor : 108.179.253.230     | k0kn-k5F)()f,/kyo*klqmC-0k#(LzAuAtHA_k1n!k*J%2/(
-    // banco    : flexib52_db_estoque | 5Ynq0n83)3/=/2n!r,not/,/3n)+3"L;ww!8]n4q%n/z@5/0
+    // usuario  : flexib52_d2masterpiece  | 0Y25N2V3)3+=MP2B6V238",1Q2GI3-L=-;!8[2""E23z@S/0
+    // senha    : Qy=Wh6u0D]G1            | 5258Q5Y:Y"IIPS5E9]56;7m,T5JL@F!A"@PKa5U8H5N*5VSg
+    // servidor : 108.179.253.230         | k0kn-k5F)()f,/kyo*klqmC-0k#(LzAuAtHA_k1n!k*J%2/(
+    // banco    : flexib52_master_piece   | )Yx :xD")3@=9=x.!+xy#w,0?x353/L:3)-8[x@ 1x/z=A/0
 
-    $usuario = decrip('VYVYqVy3)3/=psVeZ+VW]X,-tVjl3fLa,`48`VuYhVnzVv/0');
-    $senha= decrip('#M#)B#J+C?8@AD#4*K#%,(0*E#9;15G0:/(#c#F)7#?z#GK2');
+    $usuario = decrip('0Y25N2V3)3+=MP2B6V238",1Q2GI3-L=-;!8[2""E23z@S/0');
+    $senha= decrip('5258Q5Y:Y"IIPS5E9]56;7m,T5JL@F!A"@PKa5U8H5N*5VSg');
     $servidor = decrip('k0kn-k5F)()f,/kyo*klqmC-0k#(LzAuAtHA_k1n!k*J%2/(');
-    $banco = decrip('5Ynq0n83)3/=/2n!r,not/,/3n)+3"L;ww!8]n4q%n/z@5/0');
+    $banco = decrip(')Yx :xD")3@=9=x.!+xy#w,0?x353/L:3)-8[x@ 1x/z=A/0');
 
-/*
-    $usuario  = 'flexib52_tales';
-    $senha    = 'Xspider0';
-    $servidor = '108.179.253.230';
-    $banco    = 'flexib52_db_estoque';
-*/
 	$conexao = new mysqli($servidor, $usuario, $senha, $banco);
 
 	if (!$conexao){
