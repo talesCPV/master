@@ -272,7 +272,8 @@ async function openHTML(template,where="content-screen",label="", data="",pos=[3
     if(template.trim() != ""){
         const page_name = template.split('.')[0]
         return await new Promise((resolve,reject) =>{
-            fetch( "templates/"+template)
+             
+            fetch( localStorage.getItem("folder")!= null ? localStorage.getItem("folder")+template : template)
             .then( stream => stream.text())
             .then( text => {
                 const temp = document.createElement('div');

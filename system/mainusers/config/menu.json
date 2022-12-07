@@ -1,0 +1,21 @@
+{
+	"menu": [
+		{
+			"modulo" : "Usuarios",
+			"script" : "javascript:openHTML('usuarios.html','pop-up','Cadastro de Usuários')",
+			"access" : [10],
+			"class"  : "",
+			"icone"  : "fa fa-industry",
+			"itens"  : []
+		},				
+		{
+			"modulo" : "Configuração",
+			"script" : "javascript:openHTML('config.html','content-screen','Configuração de Sistema')",
+			"access" : [10,9],
+			"class"  : "",
+			"icone"  : "fa fa-industry",
+			"itens"  : []
+		}			
+					
+	]		
+}
