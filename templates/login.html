@@ -77,20 +77,48 @@
             const myPromisse = queryDB(params,0)
 
             myPromisse.then((resolve)=>{
-                const json = JSON.parse(resolve);            
+                const json = JSON.parse(resolve);
+console.log(json)                
                 if(json.length > 0){
-                    localStorage.setItem("id",json[0].id);
-                    localStorage.setItem("username",json[0].user);
-                    localStorage.setItem("hash",json[0].hash);
-                    localStorage.setItem("system",json[0].system);
-                    localStorage.setItem("folder","system/"+json[0].system);
-                    localStorage.setItem("cliente",json[0].client);
-                    localStorage.setItem("nome",json[0].nome);
-                    localStorage.setItem("access",json[0].class);
-                    localStorage.setItem("cel",json[0].cel);
-                    localStorage.setItem("email",json[0].email);
-                    openHTML('dashboard.html','main-screen')
-                    document.documentElement.requestFullscreen();
+
+                    const params_cli = new Object;
+                    params_cli.user = json[0].id_client;
+
+                    const myPromisse_cli = queryDB(params_cli,1)
+                    myPromisse_cli.then((resolve)=>{
+                        const json_cli = JSON.parse(resolve);
+console.log(json_cli)                
+
+                        const params_sys = new Object;
+                            params_sys.user = json[0].id_system;
+
+                        const myPromisse_sys = queryDB(params_sys,2)
+                        myPromisse_sys.then((resolve)=>{
+                            const json_sys = JSON.parse(resolve);
+console.log(json_sys)
+
+                            localStorage.setItem("id",json[0].id);
+                            localStorage.setItem("username",json[0].user);
+                            localStorage.setItem("hash",json[0].hash);
+                            localStorage.setItem("system",json_sys[0].nome);
+                            localStorage.setItem("folder",json_sys[0].path+'templates/');
+                            localStorage.setItem("cliente",json_cli[0].nome);
+                            localStorage.setItem("nome",json[0].nome);
+                            localStorage.setItem("access",json[0].class);
+                            localStorage.setItem("cel",json[0].cel);
+                            localStorage.setItem("email",json[0].email);
+                            openHTML('dashboard.html','main-screen')
+                            document.documentElement.requestFullscreen();
+
+
+                        })
+
+                    })
+
+
+
+
+
 
                 }else{
                     alert("Usuário ou senha inválido!");

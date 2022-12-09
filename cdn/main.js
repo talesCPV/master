@@ -273,7 +273,7 @@ async function openHTML(template,where="content-screen",label="", data="",pos=[3
         const page_name = template.split('.')[0]
         return await new Promise((resolve,reject) =>{
              
-            fetch( localStorage.getItem("folder")!= null ? localStorage.getItem("folder")+"/templates/"+template : template)
+            fetch( localStorage.getItem("folder")!= null ? localStorage.getItem("folder")+template : template)
             .then( stream => stream.text())
             .then( text => {
                 const temp = document.createElement('div');
@@ -430,7 +430,7 @@ function openMenu(){
     var drop = 0
     const data = new URLSearchParams();        
         data.append('hash', localStorage.getItem('hash'));
-        data.append('path', localStorage.getItem('folder')+'/config/menu.json')
+        data.append('path', localStorage.getItem('folder')+'../config/menu.json')
 
     const myRequest = new Request("backend/openMenu.php",{
         method : "POST",
