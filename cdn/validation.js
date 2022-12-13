@@ -181,7 +181,10 @@ function getCNPJ(V){
             }else if(i==12){
                 out+='-'
             }
-            out+=V[i]            
+            out+=V[i]
+            if(out.length ==18){
+                return out
+            }            
         }
     }
     return out

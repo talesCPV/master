@@ -7,15 +7,16 @@
     <link rel="stylesheet" href="style/modal.css">
     <link rel="icon" href="assets/icon.png">
 
+    <!-- JS-PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.2.3/jspdf.plugin.autotable.min.js"></script>
+
     <!-- Internal CDNs -->    
     <script src="cdn/main.js"></script>
     <script src="cdn/validation.js"></script>   
     <script src="cdn/barcode.js"></script> 
     <script src="cdn/js_pdf.js"></script>
     
-    <!-- JS-PDF -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.2.3/jspdf.plugin.autotable.min.js"></script>
     
     <title>D2 Soft</title>
 </head>
@@ -26,8 +27,7 @@
 
 </body>
 <script>
-    
-    if(localStorage.getItem('folder') != null){
+    if(localStorage.getItem('hash') != null){
         openHTML('dashboard.html','main-screen')
     }else{
         openHTML('templates/login.html','main-screen')

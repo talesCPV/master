@@ -65,6 +65,16 @@
 </template>
 <script>
 
+    localStorage.clear();                
+//    console.log(window.location.href.substr(window.location.href.length-1,1))
+//    console.log(window.location.href)
+    
+    localStorage.setItem("folder",window.location.href)
+    localStorage.setItem("db_user",'0Y25N2V3)3+=MP2B6V238",1Q2GI3-L=-;!8[2""E23z@S/0');
+    localStorage.setItem("db_pass",'5258Q5Y:Y"IIPS5E9]56;7m,T5JL@F!A"@PKa5U8H5N*5VSg');
+    localStorage.setItem("db_serv",'k0kn-k5F)()f,/kyo*klqmC-0k#(LzAuAtHA_k1n!k*J%2/(');
+    localStorage.setItem("db_data",')Yx :xD")3@=9=x.!+xy#w,0?x353/L:3)-8[x@ 1x/z=A/0');
+
     document.querySelector('#btnLogin').addEventListener('click',()=>{
 
         if(checkField(['edtUser','edtPass'])){
@@ -73,52 +83,30 @@
             const params = new Object;
                 params.user = user;
                 params.hash = hash;
-
             const myPromisse = queryDB(params,0)
 
             myPromisse.then((resolve)=>{
                 const json = JSON.parse(resolve);
-console.log(json)                
+console.log(json)              
                 if(json.length > 0){
 
-                    const params_cli = new Object;
-                    params_cli.user = json[0].id_client;
-
-                    const myPromisse_cli = queryDB(params_cli,1)
-                    myPromisse_cli.then((resolve)=>{
-                        const json_cli = JSON.parse(resolve);
-console.log(json_cli)                
-
-                        const params_sys = new Object;
-                            params_sys.user = json[0].id_system;
-
-                        const myPromisse_sys = queryDB(params_sys,2)
-                        myPromisse_sys.then((resolve)=>{
-                            const json_sys = JSON.parse(resolve);
-console.log(json_sys)
-
-                            localStorage.setItem("id",json[0].id);
-                            localStorage.setItem("username",json[0].user);
-                            localStorage.setItem("hash",json[0].hash);
-                            localStorage.setItem("system",json_sys[0].nome);
-                            localStorage.setItem("folder",json_sys[0].path+'templates/');
-                            localStorage.setItem("cliente",json_cli[0].nome);
-                            localStorage.setItem("nome",json[0].nome);
-                            localStorage.setItem("access",json[0].class);
-                            localStorage.setItem("cel",json[0].cel);
-                            localStorage.setItem("email",json[0].email);
-                            openHTML('dashboard.html','main-screen')
-                            document.documentElement.requestFullscreen();
-
-
-                        })
-
-                    })
-
-
-
-
-
+                    localStorage.setItem("id_user",json[0].id);
+                    localStorage.setItem("username",json[0].user);
+                    localStorage.setItem("hash",json[0].hash);
+                    localStorage.setItem("system",json[0].sistema);
+                    localStorage.setItem("folder",json[0].path_system+'templates/');
+                    localStorage.setItem("db_user",json[0].db_user);
+                    localStorage.setItem("db_pass",json[0].db_pass);
+                    localStorage.setItem("db_serv",json[0].db_serv);
+                    localStorage.setItem("db_data",json[0].db_base);
+                    localStorage.setItem("cliente",json[0].cliente);
+                    localStorage.setItem("nome",json[0].nome);
+                    localStorage.setItem("access",json[0].class);
+                    localStorage.setItem("cel",json[0].cel);
+                    localStorage.setItem("email",json[0].email);
+                    document.querySelector('title').innerHTML = json[0].sistema
+                    openHTML('dashboard.html','main-screen')
+//                    document.documentElement.requestFullscreen();
 
                 }else{
                     alert("Usuário ou senha inválido!");

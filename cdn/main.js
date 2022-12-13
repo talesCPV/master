@@ -122,6 +122,7 @@ HTMLTableElement.prototype.plot = function(obj, fields,type='',file=false){
         let html, op
     
         if(type.length > 0 && i<type.length){
+//            console.log(obj[arr[0]])
             switch (type[i].substring(0,3)) {
                 case 'int':
                   html = parseInt(obj[arr[0]])
@@ -269,10 +270,11 @@ function newModal(title, content, pos, id){
 }
 
 async function openHTML(template,where="content-screen",label="", data="",pos=[30,30]){
+//alert( localStorage.getItem("folder")!= null ? localStorage.getItem("folder")+template : template)    
     if(template.trim() != ""){
         const page_name = template.split('.')[0]
         return await new Promise((resolve,reject) =>{
-             
+//console.log(localStorage.getItem("folder")!= null ? localStorage.getItem("folder")+template : template)             
             fetch( localStorage.getItem("folder")!= null ? localStorage.getItem("folder")+template : template)
             .then( stream => stream.text())
             .then( text => {
@@ -304,7 +306,9 @@ async function openHTML(template,where="content-screen",label="", data="",pos=[3
 
                 eval(script.innerHTML);
                 resolve = body
-                document.querySelector('#drop').checked = false // close menu
+                if(localStorage.getItem('hash') != null){
+                    document.querySelector('#drop').checked = false // close menu
+                }
             }); 
         }); 
     }
@@ -312,11 +316,16 @@ async function openHTML(template,where="content-screen",label="", data="",pos=[3
 
 /*  DATABASE  */
 function queryDB(params,cod){
+    
     const data = new URLSearchParams();        
         data.append("cod", cod);
         data.append("params", JSON.stringify(params));
+        data.append("user", localStorage.getItem('db_user'));
+        data.append("pass", localStorage.getItem('db_pass'));
+        data.append("serv", localStorage.getItem('db_serv'));
+        data.append("data", localStorage.getItem('db_data'));
 
-    const myRequest = new Request("backend/query_db.php",{
+    const myRequest = new Request(localStorage.getItem('folder') + "backend/query_db.php",{
         method : "POST",
         body : data
     });
@@ -431,6 +440,10 @@ function openMenu(){
     const data = new URLSearchParams();        
         data.append('hash', localStorage.getItem('hash'));
         data.append('path', localStorage.getItem('folder')+'../config/menu.json')
+        data.append("user", localStorage.getItem('db_user'));
+        data.append("pass", localStorage.getItem('db_pass'));
+        data.append("serv", localStorage.getItem('db_serv'));
+        data.append("data", localStorage.getItem('db_data'));
 
     const myRequest = new Request("backend/openMenu.php",{
         method : "POST",

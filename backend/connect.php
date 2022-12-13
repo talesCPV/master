@@ -1,5 +1,5 @@
 <?php
-
+/*
     include "crip.php";
 
     // usuario  : flexib52_d2masterpiece  | 0Y25N2V3)3+=MP2B6V238",1Q2GI3-L=-;!8[2""E23z@S/0
@@ -17,5 +17,29 @@
 	if (!$conexao){
         die ("Erro de conexão com localhost, o seguinte erro ocorreu -> ".mysql_error());
     }
+*/
+
+if (IsSet($_POST["user"]) && IsSet($_POST["pass"]) && IsSet($_POST["serv"]) && IsSet($_POST["data"]) ){
+
+//        echo($_POST["user"]);
+
+        include "crip.php";
+        $usuario = decrip($_POST["user"]);
+        $senha= decrip($_POST["pass"]);
+        $servidor = decrip($_POST["serv"]);
+        $banco = decrip($_POST["data"]);
+
+        $conexao = new mysqli($servidor, $usuario, $senha, $banco);
+        if (!$conexao){
+            die ("Erro de conexão com localhost, o seguinte erro ocorreu -> ".mysql_error());
+        }
+
+
+    }
+
+
+// 0Y25N2V3)3+=MP2B6V238\",1Q2GI3-
+// 0Y25N2V3)3+=MP2B6V238",1Q2GI3-L=-;!8[2""E23z@S/0
+
 
 ?>
